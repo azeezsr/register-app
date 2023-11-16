@@ -4,7 +4,7 @@ pipeline {
         jdk 'Java17'
         maven 'Maven3'
     }
-}
+
     stages{
         stage("Cleanup Workspace"){
                 steps {
@@ -12,15 +12,16 @@ pipeline {
                 }
         }
 
+
         stage("Checkout from SCM"){
                 steps {
                     git branch: 'main', credentialsId: 'github', url: 'https://github.com/azeezsr/register-app.git'
                 }
         }
-
         stage("Build Application"){
             steps {
                 sh "mvn clean package"
             }
-
        }
+   } 
+}
